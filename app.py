@@ -3,6 +3,7 @@ from flask import (
 )
 
 app = Flask(__name__)
+import os
 
 @app.route('/')
 def index():
@@ -10,12 +11,12 @@ def index():
 
 @app.route('/fortune/')
 def fortune():
-    return 'fortune'
+    message = os.system('fortune')
+    return message
 
 @app.route('/cowsay/<message>/')
 def cowsay(message):
-    #return '<pre>' + message + '</pre>'
-    return 'cowsay'
+    return '<pre>' + message + '</pre>'
 
 @app.route('/cowfortune/')
 def cowfortune():

@@ -10,7 +10,7 @@ ENV PATH=$PATH:/usr/games
 ENV LC_ALL=C.UTF-8
 ENV LANG=C.UTF-8
 
-WORKDIR /app
+WORKDIR /webfortune
 
 COPY requirements.txt requirements.txt
 COPY app.py app.py
