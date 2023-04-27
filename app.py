@@ -14,9 +14,12 @@ def index():
 
 @app.route('/fortune/')
 def fortune():
-    message = 'fortune'
-    #message = os.system('fortune')
-    return 'fortune'
+    message = os.system('fortune >temp.txt')
+    f = open('temp.txt', 'r')
+    output = f.read()
+    f.close()
+    os.system('rm temp.txt')
+    return output
 
 @app.route('/cowsay/<message>/')
 def cowsay(message):
@@ -29,4 +32,9 @@ def cowsay(message):
 
 @app.route('/cowfortune/')
 def cowfortune():
-    return 'cowfortune'
+    os.system('cowsay | fortune >temp.txt')
+    f = open('temp.txt', 'r')
+    output = f.read()
+    f.close()
+    os.system('rm temp.txt')
+    return '<pre>' + output + '</pre>'
