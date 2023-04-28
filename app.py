@@ -3,7 +3,6 @@ from flask import (
 )
 
 app = Flask(__name__)
-import os
 
 import os
 import subprocess
@@ -14,27 +13,16 @@ def index():
 
 @app.route('/fortune/')
 def fortune():
-    message = os.system('fortune >temp.txt')
-    f = open('temp.txt', 'r')
-    output = f.read()
-    f.close()
-    os.system('rm temp.txt')
-    return output
+    process = subprocess.run(['fortune'], stdout=subprocess.PIPE, universal_newlines=True)
+    return 'Fortune: ' + process.stdout
 
 @app.route('/cowsay/<message>/')
 def cowsay(message):
-    os.system('cowsay ' + message + ' >temp.txt')
-    f = open('temp.txt', 'r')
-    output = f.read()
-    f.close()
-    os.system('rm temp.txt')
-    return '<pre>' + output + '</pre>'
+    process = subprocess.run(['cowsay', message], stdout=subprocess.PIPE, universal_newlines=True)
+    return '<pre>' + process.stdout + '</pre>'
 
 @app.route('/cowfortune/')
 def cowfortune():
-    os.system('cowsay | fortune >temp.txt')
-    f = open('temp.txt', 'r')
-    output = f.read()
-    f.close()
-    os.system('rm temp.txt')
-    return '<pre>' + output + '</pre>'
+    fprocess = subprocess.run(['fortune'], stdout=subprocess.PIPE, universal_newlines=True)
+    cprocess = subprocess.run(['cowsay', fprocess.stdout], stdout=subprocess.PIPE, universal_newlines=True)
+    return '<pre>' + str(cprocess.stdout) + '</pre>'
