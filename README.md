@@ -35,3 +35,13 @@ http://localhost:[port]/cowfortune
 -displays the random fortune inside a cow
 ```
 
+## Remove docker container
+```
+docker ps
+docker rm -f [containername associated with port]
+```
+
+## Deactivate virtual environment
+```
+deactivate
+```
