@@ -24,7 +24,7 @@ flask run
 ```
 
 ## Website
-'''
+```
 http://localhost:[port]/
 - reroutes to fortune
 http://localhost:[port]/fortune
