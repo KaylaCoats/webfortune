@@ -14,6 +14,24 @@ source env/bin/activate
 
 ## Build docker
 ```
-docker build -t kaylacoats/webfortune .
-docker run -dp 8007:5000 kaylacoats/webfortune
+docker build -t [name]/webfortune .
+docker run -dp [port]:5000 [name]/webfortune
 ```
+
+## Run flask
+```
+flask run
+```
+
+## Website
+'''
+http://localhost:[port]/
+- reroutes to fortune
+http://localhost:[port]/fortune
+- displays a random fortune
+http://localhost:[port]/cowsay/[message]
+- displays the message you input inside a cow
+http://localhost:[port]/cowfortune
+-displays the random fortune inside a cow
+```
+
