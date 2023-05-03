@@ -4,6 +4,7 @@
 ## Clone repository
 ```
 git clone https://github.com/kaylacoats/webfortune
+cd webfortune
 ```
 
 ## Create a virtual environment
