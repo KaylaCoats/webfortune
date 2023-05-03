@@ -36,6 +36,11 @@ http://localhost:[port]/cowfortune
 -displays the random fortune inside a cow
 ```
 
+## Run Tests
+```
+pytest
+```
+
 ## Remove docker container
 ```
 docker ps
